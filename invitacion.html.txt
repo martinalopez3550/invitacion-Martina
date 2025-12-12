@@ -1,0 +1,95 @@
+invitacion.html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitación</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f2f8;
+      text-align: center;
+    }
+    .hero {
+      padding: 40px 20px;
+      background: #d9b3e6;
+      color: #fff;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+    .button {
+      padding: 12px 20px;
+      background: #9b59b6;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    #countdown {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .map-container {
+      background-image: url('https://i.imgur.com/7tGqeqb.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 50px 20px;
+      color: white;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <audio controls autoplay loop>
+    <source src="https://www.youtube.com/watch?v=32rmy_aH7pM" type="audio/mpeg" />
+  </audio>
+
+  <div class="hero">
+    <h1>Mis 27</h1>
+    <h2>Martina</h2>
+  </div>
+
+  <div class="container">
+    <h3>Fecha del evento</h3>
+    <p>19 de mayo - 21:00 a 1:00 AM</p>
+
+    <div id="countdown">Cargando...</div>
+
+    <a class="button" href="https://www.google.com/maps/search/?api=1&query=Catamarca+3550+Quilmes+Oeste" target="_blank">Ver ubicación: Catamarca 3550, Quilmes Oeste</a>
+  </div>
+
+  <div class="map-container">
+    <h3>¡Bienvenidos a la fiesta de Martina!</h3>
+    <p>Estamos muy felices de compartir este momento tan especial con ustedes. ¡Nos vemos pronto!</p>
+  </div>
+
+  <script>
+    const targetDate = new Date("2025-05-19T21:00:00").getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").innerHTML = "¡Hoy es el gran día!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+    }, 1000);
+  </script>
+</body>
+</html>
